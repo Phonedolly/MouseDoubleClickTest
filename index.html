@@ -25,8 +25,8 @@
 		Clicks: <input id="count" type="text" value="0" size="4"> <button id="reset">reset</button><br />
 		Fast double click count: <input id="dcCount" type="text" value="0" size="4"> <br />
 		<div style="display: flex; flex-direction: row;">
-			Set Difference between two clicks to recognize as "Double Click" (seconds): <input id="diffSetter" onchange="setDiff(this.value)"
-				type="number" min="0" value="0.08" />
+			Set Differece to recognize as "Double Click" (seconds): <input id="diffSetter"
+				onchange="setDiff(this.value)" type="number" min="0" value="0.08" />
 			<button id="resetDiff" onclick="resetDiff()">reset diff</button>
 		</div>
 		<p id="diffText">current diff:</p>
@@ -51,14 +51,16 @@
 		function setDiff(value) {
 			diffFactor = value;
 			console.log(value);
+			diffText.innerText = "current diff: " + diffFactor;
 		}
 		function resetDiff() {
 			diffSetter.value = 0.08
 			diffFactor = 0.08
+			diffText.innerText = "current diff: " + diffFactor;
 		}
 
 		diffText.innerText = "current diff: " + diffFactor;
-
+		
 		var prevClickMicrotime = microtime(true);
 		function microtime(get_as_float) {
 			var now = new Date().getTime() / 1000;
